@@ -23,7 +23,7 @@ extension UIWheelKeyboard.KeySet {
     var font: UIFont {
         switch self {
         case .alphanumeric:
-            return .preferredFont(for: .body)
+            return .preferredSystemFont(for: .body)
         case let .custom(_, customFont):
             return customFont
         }

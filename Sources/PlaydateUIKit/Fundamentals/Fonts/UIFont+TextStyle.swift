@@ -22,14 +22,14 @@ public extension UIFont {
     /// Use a preferred font for a given text style.
     ///
     /// - Parameter textStyle: The text style that determines the font to use.
-    static func preferredFont(for textStyle: UIFont.TextStyle) -> UIFont {
+    static func preferredSystemFont(for textStyle: UIFont.TextStyle) -> UIFont {
         switch textStyle {
         case .body:
-            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .regular)
+            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .regular)
         case .caption:
-            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .bold)
+            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .bold)
         case .title:
-            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .regular)
+            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .regular)
         }
     }
 }

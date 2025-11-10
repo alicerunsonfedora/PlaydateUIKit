@@ -63,7 +63,7 @@ open class UITextField: UIView {
                 width: self.frame.width,
                 height: 20)
             )
-        label.font = .preferredFont(for: .caption)
+        label.font = .preferredSystemFont(for: .caption)
         label.isMultiline = false
         label.isHidden = (helperText == nil)
         return label

@@ -16,7 +16,7 @@ open class UILabel: UIView {
     open var text: String?
 
     /// The font the label uses to render the text.
-    open var font: UIFont? = .preferredFont(for: .body)
+    open var font: UIFont? = .preferredSystemFont(for: .body)
 
     /// Whether the label spans multiple lines.
     open var isMultiline: Bool = true
