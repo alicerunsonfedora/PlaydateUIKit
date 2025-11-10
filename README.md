@@ -36,12 +36,6 @@ Then add `PlaydateUIKit` as a dependency to your Playdate game or app:
 )
 ```
 
-> **Note**  
-> To use the PlaydateUIKit symbols library and other UI resources, you'll
-> need to copy the resources directory in `Sources/PlaydateKit/Resources`
-> into your Playdate game project for the time being until we can find a
-> way to bundle these ✨automagically✨.
-
 ## Usage
 
 > **Important**  
@@ -113,6 +107,7 @@ projects:
 
 - [PlaydateKit](https://github.com/finnvoor/PlaydateKit) - CC0 1.0 Universal
 - [UTF8ViewExtensions](https://github.com/strawdynamics/UTF8ViewExtensions) - CC0 1.0 Universal
+- [Inter](https://github.com/rsms/inter) - OFL 1.1
 
 ## License
 

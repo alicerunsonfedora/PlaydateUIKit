@@ -36,7 +36,7 @@ public class UIImage {
         }
 
         guard let symbolTable = try? Graphics.BitmapTable(
-            path: "Resources/Fonts/UISymbols-\(textStyle.preferredFontSize)-Regular") else {
+            path: "PlaydateUIKit_Resources/Fonts/UISymbols-\(textStyle.preferredFontSize)-Regular") else {
             return
         }
         self.pdBitmap = symbolTable.bitmap(at: idx)?.copy()

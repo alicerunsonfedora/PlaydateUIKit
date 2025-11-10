@@ -21,16 +21,15 @@ public extension UIFont {
 
     /// Use a preferred font for a given text style.
     ///
-    /// > Important: This requires the Roobert font to be included in your resources.
     /// - Parameter textStyle: The text style that determines the font to use.
     static func preferredFont(for textStyle: UIFont.TextStyle) -> UIFont {
         switch textStyle {
         case .body:
-            return UIFont(named: "Roobert", size: textStyle.preferredFontSize, weight: .medium)
+            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .regular)
         case .caption:
-            return UIFont(named: "Roobert", size: textStyle.preferredFontSize, weight: .bold)
+            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .bold)
         case .title:
-            return UIFont(named: "Roobert", size: textStyle.preferredFontSize, weight: .medium)
+            return UIFont(named: "Inter", size: textStyle.preferredFontSize, weight: .regular)
         }
     }
 }
