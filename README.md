@@ -96,7 +96,7 @@ requests.
 If you'd like to report a bug or request a feature, you can do so at
 the links below.
 
-[View issues &rsaquo;](https://youtrack.marquiskurt.net/youtrack/issues/PUK)
+[View issues &rsaquo;](https://youtrack.marquiskurt.net/youtrack/issues/PUK)  
 [Report an issue &rsaquo;](https://youtrack.marquiskurt.net/youtrack/newIssue?project=PUK)
 
 Please be sure to follow best coding practices for this project.
