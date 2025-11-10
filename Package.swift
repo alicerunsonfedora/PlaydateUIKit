@@ -26,6 +26,9 @@ let package = Package(
                 .product(name: "PlaydateKit", package: "PlaydateKit"),
                 .product(name: "UTF8ViewExtensions", package: "UTF8ViewExtensions")
             ],
+            resources: [
+                .copy("Resources")
+            ],
             swiftSettings: [
                 .enableExperimentalFeature("Embedded"),
                 .unsafeFlags([
