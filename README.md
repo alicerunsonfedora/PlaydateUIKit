@@ -93,6 +93,11 @@ This project is currently accepting contributions through GitHub until
 Forgejo and other Git repository hosting services support federated pull
 requests.
 
+> **Note**  
+> GitHub is treated as a _mirror_ with the exception for public pull
+> requests. The source of truth can be found on SkyVault at
+> https://source.marquiskurt.net/PDUniverse/PlaydateUIKit.
+
 If you'd like to report a bug or request a feature, you can do so at
 the links below.
 
