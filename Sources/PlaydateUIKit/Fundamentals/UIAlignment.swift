@@ -1,5 +1,5 @@
 
-// An enumeration of alignment options along a horizontal axis.
+/// An enumeration of alignment options along a horizontal axis.
 public enum UIHorizontalAlignment {
     /// The left or leading side.
     case leading

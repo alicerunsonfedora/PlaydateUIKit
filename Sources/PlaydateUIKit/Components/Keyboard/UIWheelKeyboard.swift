@@ -10,9 +10,6 @@ public enum UIWheelKeyboardCode {
 }
 
 /// A keyboard that displays characters in a wheel.
-///
-/// Users can scroll between the list of characters using the D-Pad and the crank. Pressing the A button will
-/// activate the current character, and pressing the B button will press the delete key.
 public class UIWheelKeyboard: UIView {
     /// An enumeration of the key sets the keyboard supports.
     public enum KeySet {
