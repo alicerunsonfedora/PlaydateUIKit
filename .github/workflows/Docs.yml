@@ -31,6 +31,11 @@ jobs:
           submodules: recursive
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - uses: actions/checkout@v4
+      - name: 'Install Swift Toolchain'
+        uses: finnvoor/swiftly-action@main
+      - name: 'Install Playdate SDK'
+        uses: finnvoor/playdatesdk-action@main
       - name: Select Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
