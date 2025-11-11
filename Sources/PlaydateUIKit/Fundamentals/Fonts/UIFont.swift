@@ -42,7 +42,7 @@ public struct UIFont {
         fontSize = size
         fontWeight = weight
         do {
-            pdFont = try Graphics.Font(path: "Resources/Fonts/\(name)-\(size)-\(weight.resourceSuffix)")
+            pdFont = try Graphics.Font(path: "Resources/Fonts/\(name)-\(weight.resourceSuffix)-\(size)")
         } catch {
             print("Failed to instantiate font: \(error)")
         }
@@ -55,7 +55,7 @@ public struct UIFont {
 
         do {
             pdFont = try Graphics.Font(
-                path: "PlaydateUIKit_Resources/Fonts/Inter-\(systemFontSize)-\(systemFontWeight.resourceSuffix)")
+                path: "PlaydateUIKit_Resources/Fonts/Inter-\(systemFontWeight.resourceSuffix)-\(systemFontSize)")
         } catch {
             print("Failed to instantiate system font: \(error)")
         }
