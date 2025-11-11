@@ -25,11 +25,11 @@ public extension UIFont {
     static func preferredSystemFont(for textStyle: UIFont.TextStyle) -> UIFont {
         switch textStyle {
         case .body:
-            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .regular)
+            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .medium)
         case .caption:
             return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .bold)
         case .title:
-            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .regular)
+            return UIFont(systemFontSize: textStyle.preferredFontSize, systemFontWeight: .medium)
         }
     }
 }
