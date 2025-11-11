@@ -36,7 +36,7 @@ jobs:
             -toolchain "swift latest";
           $(xcrun -f docc -toolchain "swift latest") process-archive \
             transform-for-static-hosting $(find /tmp/docc -type d -name 'PlaydateUIKit.doccarchive') \
-            --hosting-base-path PlaydateUIKit \
+            --hosting-base-path . \
             --output-path docs;
           echo "<script>window.location.href += \"/documentation/playdateuikit\"</script>" > docs/index.html;
       - name: Upload
