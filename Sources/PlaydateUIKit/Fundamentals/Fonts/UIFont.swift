@@ -49,13 +49,13 @@ public struct UIFont {
     }
 
     init(systemFontSize: Int, systemFontWeight: Weight) {
-        fontName = "Inter"
+        fontName = "UISystemFont"
         fontSize = systemFontSize
         fontWeight = systemFontWeight
 
         do {
             pdFont = try Graphics.Font(
-                path: "PlaydateUIKit_Resources/Fonts/Inter-\(systemFontWeight.resourceSuffix)-\(systemFontSize)")
+                path: "PlaydateUIKit_Resources/Fonts/Roobert-\(systemFontWeight.resourceSuffix)-\(systemFontSize)")
         } catch {
             print("Failed to instantiate system font: \(error)")
         }

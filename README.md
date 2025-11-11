@@ -105,9 +105,9 @@ Please be sure to follow best coding practices for this project.
 **PlaydateUIKit** is made possible thanks to the following open-source
 projects:
 
-- [PlaydateKit](https://github.com/finnvoor/PlaydateKit) - CC0 1.0 Universal
-- [UTF8ViewExtensions](https://github.com/strawdynamics/UTF8ViewExtensions) - CC0 1.0 Universal
-- [Inter](https://github.com/rsms/inter) - OFL 1.1
+- [PlaydateKit](https://github.com/finnvoor/PlaydateKit) - Finn Voorhees, CC0 1.0 Universal
+- [UTF8ViewExtensions](https://github.com/strawdynamics/UTF8ViewExtensions) - Straw Dynamics, CC0 1.0 Universal
+- [Roobert](https://sdk.play.date/3.0.1/Inside%20Playdate.html#_legal_information) - Panic Inc, CC BY 4.0 
 
 ## License
 
