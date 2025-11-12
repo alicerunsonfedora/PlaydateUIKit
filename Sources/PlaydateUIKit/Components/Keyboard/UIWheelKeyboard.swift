@@ -48,12 +48,14 @@ public class UIWheelKeyboard: UIView {
     public init(keySet: KeySet) {
         self.keySet = keySet
         super.init(
-            frame: Rect(
-                x: Display.width - Constants.backgroundWidth,
-                y: 0,
-                width: Constants.backgroundWidth,
-                height: Display.height)
+            frame: UIRect(
+                at: Point(x: Display.width - Constants.backgroundWidth, y: 0),
+                size: UISize(
+                    width: Float(Constants.backgroundWidth),
+                    height: Float(Display.height)
+                )
             )
+        )
         setupView()
     }
 
@@ -106,11 +108,16 @@ public class UIWheelKeyboard: UIView {
         for (keySlot, key) in zip(keySlotIndices, keyIndices) {
             let subview = subviews[keySlot]
             guard keySet.keys.indices.contains(key) else {
-                subview.frame = Rect(
-                    x: Display.width - (Constants.backgroundWidth - minKeyMargin),
-                    y: currentY,
-                    width: Constants.keySize,
-                    height: Constants.keySize)
+                subview.frame = UIRect(
+                    at: Point(
+                        x: Display.width - (Constants.backgroundWidth - minKeyMargin),
+                        y: currentY
+                    ),
+                    size: UISize(
+                        width: Float(Constants.keySize),
+                        height: Float(Constants.keySize)
+                    )
+                )
                 subview.isHidden = true
                 currentY += Constants.keySize + Constants.keyPadding
                 continue
@@ -120,17 +127,28 @@ public class UIWheelKeyboard: UIView {
             let computedKeySize = isActiveKey ? Constants.activeKeySize : Constants.keySize
             let computedMargin = isActiveKey ? maxKeyMargin : minKeyMargin
 
-            subview.frame = Rect(
-                x: Display.width - (Constants.backgroundWidth - computedMargin),
-                y: currentY,
-                width: computedKeySize,
-                height: computedKeySize)
+            
+
+            subview.frame = UIRect(
+                at: Point(
+                    x: Display.width - (Constants.backgroundWidth - computedMargin),
+                    y: currentY
+                ),
+                size: UISize(
+                    width: Float(computedKeySize),
+                    height: Float(computedKeySize)
+                )
+            )
             subview.isHidden = false
 
             let keyCode = UIWheelKeyboardCode.character(keySet.keys[key])
             if let keyView = subview as? UIWheelKeyboardKey {
                 keyView.key = keyCode
-                keyView.state = isActiveKey && activeKeyPressed ? .activated : .normal
+                if isActiveKey, activeKeyPressed {
+                    keyView.state.insert(.selected)
+                } else {
+                    keyView.state.remove(.selected)
+                }
             }
             
             currentY += computedKeySize + Constants.keyPadding

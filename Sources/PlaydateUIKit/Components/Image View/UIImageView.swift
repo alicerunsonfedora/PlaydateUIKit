@@ -10,13 +10,14 @@ open class UIImageView: UIView {
     /// Create an image view with a given image and frame.
     /// - Parameter image: The image to draw in the image view.
     /// - Parameter frame: The frame to draw the image into.
-    public init(image: UIImage? = nil, frame: Rect = .zero) {
+    public init(image: UIImage? = nil, frame: UIRect = .zero) {
         self.image = image
         super.init(frame: frame)
     }
 
     public convenience init(image: UIImage? = nil, at point: Point) {
-        self.init(image: image, frame: Rect(at: point, size: image?.contentIntrinsicSize ?? .zero))
+        self.init(image: image, frame: .inferredContentSize(at: point))
+        self.frame.size = image?.contentIntrinsicSize ?? .zero
     }
 
     public override func draw() {

@@ -1,12 +1,7 @@
 import PlaydateKit
 
 /// A view that displays a key inside of a ``UIWheelKeyboard``.
-class UIWheelKeyboardKey: UIView {
-    enum State {
-        case normal
-        case activated
-    }
-
+class UIWheelKeyboardKey: UIControl {
     private enum Constants {
         static let frameInset = 4
     }
@@ -17,7 +12,6 @@ class UIWheelKeyboardKey: UIView {
     var font: UIFont {
         didSet { label.font = font }
     }
-    var state: State = .normal
 
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -42,10 +36,16 @@ class UIWheelKeyboardKey: UIView {
 
     override func draw() {
         guard !isHidden else { return }
-        Graphics.fillEllipse(in: frame, color: .white)
-        if state == .activated {
-            let insetRect = frame.insetBy(dx: Float(Constants.frameInset), dy: Float(Constants.frameInset))
-            Graphics.fillEllipse(in: insetRect)
+        if state.contains(.selected) {
+            label.textColor = .white
+        } else {
+            label.textColor = .black
+        }
+
+        Graphics.fillEllipse(in: frame.pdRect, color: .white)
+        if state.contains(.selected) {
+            let insetRect = frame.inset(by: .uniform(Float(Constants.frameInset)))
+            Graphics.fillEllipse(in: insetRect.pdRect)
             Graphics.drawMode = .fillWhite
         }
 

@@ -1,7 +1,7 @@
 import PlaydateKit
 
 /// An entry field that allows the user to provide text with the keyboard.
-open class UITextField: UIView {
+open class UITextField: UIControl {
     /// An enumeration of the text field styles supported.
     public enum TextFieldStyle {
         /// A plain style with no border.
@@ -49,7 +49,7 @@ open class UITextField: UIView {
     }
 
     private lazy var displayedText: UILabel = {
-        let label = UILabel(text: self.text, frame: self.frame.insetBy(dx: 4, dy: 4))
+        let label = UILabel(text: self.text, frame: self.frame.inset(by: .uniform(4)))
         label.font = supportedCharacters.font
         label.text = ""
         return label
@@ -58,10 +58,9 @@ open class UITextField: UIView {
     private lazy var helperTextLabel: UILabel = {
         let label = UILabel(
             text: self.helperText,
-            frame: Rect(
-                origin: self.frame.origin.translatedBy(dx: 0, dy: self.frame.height + 6),
-                width: self.frame.width,
-                height: 20)
+            frame: UIRect(
+                at: self.frame.origin.translatedBy(dx: 0, dy: self.frame.size.height + 6),
+                size: UISize(width: self.frame.size.width, height: 20))
             )
         label.font = .preferredSystemFont(for: .caption)
         label.isMultiline = false
@@ -78,7 +77,7 @@ open class UITextField: UIView {
     /// Construct a text field with a supporte keyset in a frame.
     /// - Parameter keySet: The supported character keyset this text field will use.
     /// - Parameter frame: The text field's bounding frame.
-    public init(keySet: UIWheelKeyboard.KeySet, frame: Rect = .zero) {
+    public init(keySet: UIWheelKeyboard.KeySet, frame: UIRect = .zero) {
         self.supportedCharacters = keySet
         self.text = nil
         super.init(frame: frame)
@@ -95,7 +94,7 @@ open class UITextField: UIView {
         super.draw()
 
         if style == .bordered {
-            Graphics.drawRoundRect(self.frame, radius: 8, lineWidth: 2)
+            Graphics.drawRoundRect(self.frame.pdRect, radius: 8, lineWidth: 2)
         }
     }
 }

@@ -26,12 +26,15 @@ open class UILabel: UIView {
 
     /// The vertical alignment of the text in the label.
     /// > Note: When ``isMultiline`` is enabled, this property will take no effect.
-    open var verticalTextAlignment: UIVerticalAlignment = .top 
+    open var verticalTextAlignment: UIVerticalAlignment = .top
+
+    /// The color of the text label.
+    open var textColor: Graphics.SolidColor = .black 
 
     /// Create a label.
     /// - Parameter text: The text contents of the label.
     /// - Parameter frame: The frame that the text is rendered in.
-    public init(text: String? = nil, frame: Rect = .zero) {
+    public init(text: String? = nil, frame: UIRect = .zero) {
         self.text = text
         super.init(frame: frame)
     }
@@ -44,7 +47,7 @@ open class UILabel: UIView {
         guard let text else { return }
 
         if isMultiline {
-            Graphics.drawTextInRect(text, in: frame, aligned: Graphics.TextAlignment(uiHorizontalAlignment: textAlignment))
+            Graphics.drawTextInRect(text, in: frame.pdRect, aligned: Graphics.TextAlignment(uiHorizontalAlignment: textAlignment))
             return
         }
 
@@ -67,6 +70,19 @@ open class UILabel: UIView {
             topPoint.x = frame.maxX
         }
 
+        switch textColor {
+        case .black:
+            Graphics.drawMode = .fillBlack
+        case .white:
+            Graphics.drawMode = .fillWhite
+        case .xor:
+            Graphics.drawMode = .xor
+        case .clear:
+            fallthrough
+        @unknown default:
+            break
+        }
+
         switch textAlignment {
         case .leading:
             Graphics.drawText(text, at: topPoint)
@@ -77,5 +93,7 @@ open class UILabel: UIView {
         case .trailing:
             Graphics.drawText(text, at: topPoint.translatedBy(dx: -contentIntrinsicSize.width, dy: 0))
         }
+
+        Graphics.drawMode = .copy
     }
 }

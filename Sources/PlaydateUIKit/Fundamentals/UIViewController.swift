@@ -7,7 +7,7 @@ open class UIViewController {
 
     /// Creates a view controller with an empty view.
     public init() {
-        view = UIView(frame: Rect(x: 0, y: 0, width: Display.width, height: Display.height))
+        view = UIView(frame: .display)
         view.setNeedsDraw()
     }
 

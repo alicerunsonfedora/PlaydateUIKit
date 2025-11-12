@@ -4,11 +4,11 @@ import PlaydateKit
 open class UIView: UIFocusElement {
     /// The intrinsic size of the view's contents.
     open var contentIntrinsicSize: UISize {
-        UISize(width: frame.width, height: frame.height)
+        frame.size
     }
 
     /// The frame that the view inherits/resides in.
-    open var frame: Rect
+    open var frame: UIRect 
 
     /// Whether the view is currently focused.
     ///
@@ -43,8 +43,21 @@ open class UIView: UIFocusElement {
 
     /// Create a view of a given frame.
     /// - Parameter frame: The view's frame.
-    public init(frame: Rect) {
+    public init(frame: UIRect) {
         self.frame = frame
+        super.init()
+
+        if frame.infersSizeFromContentIntrinsicSize {
+            self.frame.size = contentIntrinsicSize
+        }
+    }
+
+    /// Create a view using a PlaydateKit rectangle.
+    /// - Parameter pdRect: The rectangle to create a frame for.
+    public init(pdRect: Rect) {
+        self.frame = UIRect(
+            at: pdRect.origin,
+            size: UISize(width: pdRect.width, height: pdRect.height))
     }
 
     /// Add a view to the current view as a child.
@@ -106,7 +119,7 @@ open class UIView: UIFocusElement {
     /// Draw the view's contents to the screen.
     open func draw() {
         if isHidden { return }
-        Graphics.fillRect(frame, color: backgroundColor)
+        Graphics.fillRect(frame.pdRect, color: backgroundColor)
         for subview in subviews {
             subview.draw()
         }
