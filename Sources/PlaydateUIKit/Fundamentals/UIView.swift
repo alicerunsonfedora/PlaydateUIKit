@@ -68,6 +68,7 @@ open class UIView: UIFocusElement {
         _subviews.append(view)
         view.superview = self
         internalAddress = _subviews.count
+        setNeedsDraw()
     }
 
     /// Draw the contents of the view to the screen when necessary.
@@ -87,6 +88,7 @@ open class UIView: UIFocusElement {
         _subviews.insert(view, at: index)
         view.superview = self
         internalAddress = _subviews.count
+        setNeedsDraw()
     }
 
     /// Remove the view from its superview.
@@ -119,8 +121,10 @@ open class UIView: UIFocusElement {
     /// Draw the view's contents to the screen.
     open func draw() {
         if isHidden { return }
+        if Graphics.drawMode != .copy { Graphics.drawMode = .copy }
         Graphics.fillRect(frame.pdRect, color: backgroundColor)
         for subview in subviews {
+            Graphics.drawMode = .copy
             subview.draw()
         }
     }

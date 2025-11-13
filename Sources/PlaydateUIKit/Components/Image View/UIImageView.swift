@@ -22,7 +22,18 @@ open class UIImageView: UIView {
 
     public override func draw() {
         guard let bitmap = image?.pdBitmap else { return }
-        if Graphics.drawMode != .copy { Graphics.drawMode = .copy }
-        Graphics.drawBitmap(bitmap, at: frame.origin)
+        if Graphics.drawMode != (image?.drawMode ?? .copy) {
+            Graphics.drawMode = image?.drawMode ?? .copy
+        }
+        guard let contentIntrinsicSize = image?.contentIntrinsicSize else {
+            Graphics.drawBitmap(bitmap, at: frame.origin)
+            return
+        }
+        Graphics.drawBitmap(
+            bitmap,
+            at: Point(
+                x: frame.midX - (contentIntrinsicSize.width / 2),
+                y: frame.midY - (contentIntrinsicSize.height / 2)
+            ))
     }
 }

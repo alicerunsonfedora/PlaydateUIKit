@@ -1,5 +1,12 @@
 import PlaydateKit
 
+/// A delegate that listens for events emitted by a ``UIControl``.
+public protocol UIControlDelegate: AnyObject {
+    /// Tells the delegate a control was momentarily pressed.
+    /// - Parameter sender: The control that was pressed.
+    func controlPressed(_ sender: UIControl)
+}
+
 /// A base class for defining a control.
 ///
 /// This class is generally not used on its own; rather, this class is used to define custom user controls.
@@ -25,6 +32,11 @@ open class UIControl: UIView {
         public static let disabled = State(rawValue: 1 << 3)
     }
 
+    /// The control's delegate.
+    ///
+    /// Use this to listen for when certain control events are emitted.
+    public var controlDelegate: (any UIControlDelegate)?
+
     /// The current state of the control.
     open var state: State = .normal {
         didSet { setNeedsDraw() }
@@ -48,6 +60,18 @@ open class UIControl: UIView {
                 state.remove(.disabled)
             } else {
                 state.insert(.disabled)
+            }
+        }
+    }
+
+    /// Whether the control is actively selected.
+    open var isSelected: Bool {
+        get { return state.contains(.selected) }
+        set {
+            if newValue {
+                state.insert(.selected)
+            } else {
+                state.remove(.selected)
             }
         }
     }

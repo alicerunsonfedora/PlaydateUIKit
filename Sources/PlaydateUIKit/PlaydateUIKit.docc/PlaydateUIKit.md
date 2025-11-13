@@ -36,6 +36,8 @@ for iOS, iPadOS, and tvOS.
 
 ### Handling user input and focus
 
+- ``UIControl``
 - ``UIFocusElement``
 - ``UIWheelKeyboard``
 - ``UITextField``
+- ``UIButton``

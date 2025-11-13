@@ -144,11 +144,7 @@ public class UIWheelKeyboard: UIView {
             let keyCode = UIWheelKeyboardCode.character(keySet.keys[key])
             if let keyView = subview as? UIWheelKeyboardKey {
                 keyView.key = keyCode
-                if isActiveKey, activeKeyPressed {
-                    keyView.state.insert(.selected)
-                } else {
-                    keyView.state.remove(.selected)
-                }
+                keyView.isSelected = isActiveKey && activeKeyPressed
             }
             
             currentY += computedKeySize + Constants.keyPadding

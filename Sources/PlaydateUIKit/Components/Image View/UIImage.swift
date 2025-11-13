@@ -8,6 +8,8 @@ public class UIImage {
     /// this corresponds to the symbol's name.
     public var name: String
 
+    var drawMode: Graphics.Bitmap.DrawMode = .copy
+
     /// The intrinsic content size of the image.
     public var contentIntrinsicSize: UISize {
         guard let pdBitmap else { return .zero }
@@ -36,10 +38,21 @@ public class UIImage {
         }
 
         guard let symbolTable = try? Graphics.BitmapTable(
-            path: "PlaydateUIKit_Resources/Fonts/UISymbols-\(textStyle.preferredFontSize)-Regular") else {
+            path: "PlaydateUIKit_Resources/Fonts/UISymbols-Regular-\(textStyle.preferredFontSize)") else {
             return
         }
         self.pdBitmap = symbolTable.bitmap(at: idx)?.copy()
+    }
+
+    init(name: String, bitmap: Graphics.Bitmap?) {
+        self.name = name
+        self.pdBitmap = bitmap
+    }
+
+    public func inverted() -> UIImage {
+        let image = UIImage(name: self.name, bitmap: self.pdBitmap?.copy())
+        image.drawMode = .inverted
+        return image
     }
 }
 
@@ -54,6 +67,10 @@ extension UIImage {
         "crank",
         "crank.fill",
         "crank.circle",
-        "crank.circle.fill"
+        "crank.circle.fill",
+        "chevron.left",
+        "chevron.right",
+        "chevron.up",
+        "chevron.down"
     ]
 }

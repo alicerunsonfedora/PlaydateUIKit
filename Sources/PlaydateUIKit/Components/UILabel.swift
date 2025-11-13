@@ -29,7 +29,7 @@ open class UILabel: UIView {
     open var verticalTextAlignment: UIVerticalAlignment = .top
 
     /// The color of the text label.
-    open var textColor: Graphics.SolidColor = .black 
+    open var textColor: Graphics.SolidColor = .black
 
     /// Create a label.
     /// - Parameter text: The text contents of the label.
@@ -45,6 +45,19 @@ open class UILabel: UIView {
             Graphics.setFont(pdFont)
         }
         guard let text else { return }
+
+        switch textColor {
+        case .black:
+            Graphics.drawMode = .fillBlack
+        case .white:
+            Graphics.drawMode = .fillWhite
+        case .xor:
+            Graphics.drawMode = .xor
+        case .clear:
+            fallthrough
+        @unknown default:
+            Graphics.drawMode = .copy
+        }
 
         if isMultiline {
             Graphics.drawTextInRect(text, in: frame.pdRect, aligned: Graphics.TextAlignment(uiHorizontalAlignment: textAlignment))
@@ -68,19 +81,6 @@ open class UILabel: UIView {
             topPoint.x = frame.center.x
         case .trailing:
             topPoint.x = frame.maxX
-        }
-
-        switch textColor {
-        case .black:
-            Graphics.drawMode = .fillBlack
-        case .white:
-            Graphics.drawMode = .fillWhite
-        case .xor:
-            Graphics.drawMode = .xor
-        case .clear:
-            fallthrough
-        @unknown default:
-            break
         }
 
         switch textAlignment {
