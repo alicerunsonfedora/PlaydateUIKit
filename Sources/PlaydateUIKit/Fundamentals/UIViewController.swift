@@ -5,6 +5,11 @@ open class UIViewController {
     /// The view this controller managers.
     public var view: UIView
 
+    /// The navigation controller driving this controller.
+    ///
+    /// If this view controller is present in a navigation controller's stack, it can be accessed here.
+    public var navigationController: UINavigationController?
+
     /// Creates a view controller with an empty view.
     public init() {
         view = UIView(frame: .display)

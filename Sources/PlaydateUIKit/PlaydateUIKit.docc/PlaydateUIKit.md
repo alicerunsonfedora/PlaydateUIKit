@@ -24,7 +24,9 @@ for iOS, iPadOS, and tvOS.
 
 ### Handling layout
 
+- ``UIEdgeInsets``
 - ``UISize``
+- ``UIRect``
 - ``UIHorizontalAlignment``
 - ``UIVerticalAlignment``
 
@@ -34,9 +36,13 @@ for iOS, iPadOS, and tvOS.
 - ``UIImageView``
 - ``UIFrameCounter``
 
+### Navigation
+- ``UINavigationController``
+
 ### Handling user input and focus
 
 - ``UIControl``
+- ``UIControlDelegate``
 - ``UIFocusElement``
 - ``UIWheelKeyboard``
 - ``UITextField``
